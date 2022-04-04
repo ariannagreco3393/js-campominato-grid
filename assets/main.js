@@ -8,3 +8,39 @@ con difficoltà 3 => tra 1 e 49
 
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
+
+//creo una funzione generica che mi serve per creare le varie griglie
+function generateGrid(selector, tag_name, class_name, limit) {
+    const cellsElement = document.querySelector(selector)
+
+    for (let i = 1; i <= limit; i++) {
+        const cellItem = document.createElement(tag_name);
+        cellItem.classList.add(class_name);
+        cellsElement.append(cellItem)
+    }
+}  
+
+// prendo la funzione che crea numeri random
+function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+//creo una funzione che generi numeri
+function generateCellsNumbers(number1, number2) {
+    const randomNumbers = [];
+
+    while (randomNumbers.length !== number2) {
+        const randomNumber = getRandomInteger(number1, number2)
+
+        if (!randomNumbers.includes(randomNumber)) {
+            randomNumbers.push(randomNumber)
+          }
+    }
+    return randomNumbers;
+}
+
+
+
+//invoco la funzione che chiama la griglia da 100 
+generateGrid('.cells', 'div', 'cell', 100);
+generateCellsNumbers(1, 100)
