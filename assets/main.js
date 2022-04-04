@@ -12,64 +12,28 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 //creo una funzione generica che mi serve per creare le varie griglie
 function generateGrid(selector, tag_name, class_name, limit) {
     const cellsElement = document.querySelector(selector)
-
+    cellsElement.innerHTML = '';
     for (let i = 1; i <= limit; i++) {
         const cellItem = document.createElement(tag_name);
         cellItem.classList.add(class_name);
+        cellItem.innerHTML = i;
         cellsElement.append(cellItem)
     }
 }  
 
-// prendo la funzione che crea numeri random
-function getRandomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
 
-//creo una funzione che generi numeri
-function generateCellsNumbers(number1, number2) {
-    const randomNumbers = [];
-
-    while (randomNumbers.length !== number2) {
-        const randomNumber = getRandomInteger(number1, number2)
-
-        if (!randomNumbers.includes(randomNumber)) {
-            randomNumbers.push(randomNumber)
-          }
-    }
-    //console.log(randomNumbers);
-
-    return randomNumbers;
-}
-
-
-// aggiungo i numeri alle celle
-function selectElements(selector, tag_name) {
-    const cells = document.querySelectorAll(selector)
-    const numbers = generateCellsNumbers()
-
-    for (let i = 0; i < cells.length; i++) {
-        const cell = cells[i];
-
-        const spanElement = document.createElement(tag_name)
-        spanElement.append(numbers[i])
-        cell.append(spanElement)    
-    }
-}
 
 // creo una funzione che mi permetta di selezionare ID della select
 function difficultLevel() {
     let valore = document.getElementById('level_difficult').value;
+    console.log(valore);
 }
 
-difficultLevel();
 
 // al click del play attivo la funzione per selezionare uno dei value
-let playButton = document.querySelector('play');
-playButton = document.addEventListener('click', difficultLevel)
+let playButton = document.querySelector('.play');
+playButton = document.addEventListener('click', difficultLevel())
+
+generateGrid('.cells', 'div', 'cell', 100); 
 
 
-
-//invoco la funzione che chiama la griglia da 100 
-generateGrid('.cells', 'div', 'cell', 100);
-generateCellsNumbers(1, 100)
-selectElements('.cell', 'span');
