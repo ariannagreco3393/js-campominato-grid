@@ -36,7 +36,38 @@ function generateCellsNumbers(number1, number2) {
             randomNumbers.push(randomNumber)
           }
     }
+    //console.log(randomNumbers);
+
     return randomNumbers;
+}
+
+
+
+// creo una funzione che mi permetta di selezionare ID della select
+function difficultLevel() {
+    let valore = document.getElementById('level_difficult').value;
+}
+
+difficultLevel();
+
+
+// al clicl del play attivo la funzione per selezionare uno dei value
+let playButton = document.querySelector('play');
+playButton = document.addEventListener('click', difficultLevel)
+
+// aggiungo i numeri alle celle
+function selectElements(cell) {
+    const cells = document.querySelector(cell)
+    const numbers = generateCellsNumbers()
+
+    for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+
+        const spanElement = document.createElement('span')
+        spanElement.append(numbers[i])
+        cell.append(spanElement)
+        
+    }
 }
 
 
