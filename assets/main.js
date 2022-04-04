@@ -42,6 +42,19 @@ function generateCellsNumbers(number1, number2) {
 }
 
 
+// aggiungo i numeri alle celle
+function selectElements(selector, tag_name) {
+    const cells = document.querySelectorAll(selector)
+    const numbers = generateCellsNumbers()
+
+    for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+
+        const spanElement = document.createElement(tag_name)
+        spanElement.append(numbers[i])
+        cell.append(spanElement)    
+    }
+}
 
 // creo una funzione che mi permetta di selezionare ID della select
 function difficultLevel() {
@@ -50,28 +63,13 @@ function difficultLevel() {
 
 difficultLevel();
 
-
-// al clicl del play attivo la funzione per selezionare uno dei value
+// al click del play attivo la funzione per selezionare uno dei value
 let playButton = document.querySelector('play');
 playButton = document.addEventListener('click', difficultLevel)
-
-// aggiungo i numeri alle celle
-function selectElements(cell) {
-    const cells = document.querySelector(cell)
-    const numbers = generateCellsNumbers()
-
-    for (let i = 0; i < cells.length; i++) {
-        const cell = cells[i];
-
-        const spanElement = document.createElement('span')
-        spanElement.append(numbers[i])
-        cell.append(spanElement)
-        
-    }
-}
 
 
 
 //invoco la funzione che chiama la griglia da 100 
 generateGrid('.cells', 'div', 'cell', 100);
 generateCellsNumbers(1, 100)
+selectElements('.cell', 'span');
