@@ -25,16 +25,14 @@ document.querySelector('form').addEventListener('submit', function (event) {
         generateGrid('.cells', 'div', 'cell', 81, 9)  
 
     } else if (level == 'difficile') {
-        
+
         generateGrid('.cells', 'div', 'cell', 49, 7) 
 
     }
 
-})
+    color()
 
- 
-
-
+});
 
 
 //creo una funzione generica che mi serve per creare le varie griglie
