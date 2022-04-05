@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+header {
+    height: 80px;
+}
+
 .resize_container {
     width: 800px;
 }
@@ -15,7 +19,6 @@
 }
 
 .cell {
-    width: calc(100% / 10);
     border: 1px solid black;
     aspect-ratio: 1 / 1;
     display: flex;
